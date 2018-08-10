@@ -1,0 +1,488 @@
+﻿@model Me_dico.it.Model.User
+@{
+    Layout = "~/Views/Shared/_Layout_Landing.cshtml";
+    ViewBag.Title = "Landing";
+    var pos = ViewBag.Registrazione ? "true" : "false";
+}
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="@Url.Action("Index", "Home")" class="navbar-brand">Entra</a>
+            <div class="brand-desc">
+                Me-dico.it
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a class="page-scroll" href="#page-top">Home</a></li>
+                @*<li><a class="page-scroll" href="#whoweare">Chi siamo</a></li>
+                <li><a class="page-scroll" href="#why">Perchè Me-dico.it</a></li>*@
+                <li><a class="page-scroll" href="#howwork">Come funziona</a></li>
+                <li><a class="" href="@Url.Action("Istruzioni", "Home")">Istruzioni</a></li>
+                <li><a class="page-scroll" href="#team">Team</a></li>
+                <li><a class="page-scroll" id="Registrazione" href="#reg">Registrati</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header id="page-top">
+    <div class="container">
+        <div class="heading">
+            <h1>
+                Benvenuti in Me-dico.it
+            </h1>
+            <span> Il portale fatto dai medici per i medici </span>
+            <p class="small">
+                Dove i medici potranno trovare un vero aiuto per il proprio lavoro
+            </p>
+        </div>
+        <div class="heading-image animate-panel" data-child="img-animate" data-effect="fadeInRight">
+           
+        </div>
+    </div>
+</header>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Connettiti con i tuoi colleghi</h4>
+                <p>Potrai confrontarti con i tuoi colleghi medici su questioni di qualunque tipo, da quelle burocratiche a quelle prettamnte cliniche</p>
+                <p><a class="navy-link btn btn-sm" href="#" role="button">Leggi</a></p>
+            </div>
+            <div class="col-md-4">
+                <h4>Chiedi informazioni</h4>
+                <p>Potrai avere risposte a quesiti precisi fornite da altri medici che hanno già affrontato lo stesso problema. In questo portale trovi solo tuoi colleghi medici</p>
+                <p><a class="navy-link btn btn-sm" href="#" role="button">Leggi</a></p>
+            </div>
+            <div class="col-md-4">
+                <h4>Rispondi ai quesiti</h4>
+                <p>Fornisci il tuo contributo rispondendo a domande poste da altri colleghi o arricchendo con dei commenti le risposte già date da altri medici</p>
+                <p><a class="navy-link btn btn-sm" href="#" role="button">Leggi</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@*<section id="why">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <h2><span class="text-success">Perchè Me-dico.it</span></h2>
+                <p>
+                    Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes.
+                </p>
+            </div>
+        </div>
+        <div class="row m-t-lg">
+            <div class="col-md-4 col-md-offset-2">
+                <strong>Come è nata l'idea.</strong>
+                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <a class="btn btn-success btn-sm">Learn more</a>
+            </div>
+            <div class="col-md-4">
+                <strong>A cosa risponde.</strong>
+                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <a class="btn btn-success btn-sm">Learn more</a>
+            </div>
+        </div>
+        <div class="row m-t-lg">
+            <div class="col-md-4 col-md-offset-2">
+                <strong>Innovativo.</strong>
+                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <a class="btn btn-success btn-sm">Learn more</a>
+            </div>
+            <div class="col-md-4">
+                <strong>Esclusivo.</strong>
+                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <a class="btn btn-success btn-sm">Learn more</a>
+            </div>
+        </div>
+    </div>
+</section>*@
+
+<section id="howwork" class="bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <h2><span class="text-success">Come funziona</span></h2>
+            </div>
+        </div>
+
+        <div class="content animate-panel">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="hpanel">
+                        <div class="panel-body">
+                            <div class="text-center">
+                                <h2 class="m-b-xs">Registrati</h2>
+                                <div class="m">
+                                    <i class="pe-7s-user fa-5x"></i>
+                                </div>
+                                <p class="small">
+                                    Registrati sul nostro portale fornendo i tuoi dati e un codice di attivazione. Il codice di attivazione ti verrà fornito via SMS dopo che avrai inviato al nostro numero di telefono un SMS contenente il numero del tuo cartellino.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="hpanel">
+                        <div class="panel-body">
+                            <div class="text-center">
+                                <h2 class="m-b-xs">Entra</h2>
+                                <div class="m">
+                                    <i class="pe-7s-global fa-5x"></i>
+                                </div>
+                                <p class="small">
+                                    Entra nel portale tramite il pulsante 'Entra' in alto a sinistra inserendo le credenziali fornite durante la registrazione. Verrai indirizzato su una pagina contenente le domande fatte più di recente da tutti i tuoi colleghi.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="hpanel">
+                        <div class="panel-body">
+                            <div class="text-center">
+                                <h2 class="m-b-xs">Cerca</h2>
+                                <div class="m">
+                                    <i class="pe-7s-search fa-5x"></i>
+                                </div>
+                                <p class="small">
+                                    Cerca se tra le domande già fatte dai tuoi ce ne sono alcune che ti interessano e che hanno già avuto delle risposte. Puoi indicare delle parole chiave per avere dei risultati più accurati e attinenti all'argomento di interessa.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="hpanel">
+                        <div class="panel-body">
+                            <div class="text-center">
+                                <h2 class="m-b-xs">Domanda</h2>
+                                <div class="m">
+                                    <i class="pe-7s-speaker fa-5x"></i>
+                                </div>
+                                <p class="small">
+                                    Se tra le domande già poste non trovi quella che si avvicina di più alle tue esigenze poni tu stesso una domanda. Vai alla pagina 'Nuova Domanda' e segui i criteri di inserimento che troverai indicati nella pagina stessa.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="hpanel">
+                        <div class="panel-body">
+                            <div class="text-center">
+                                <h2 class="m-b-xs">Rispondi</h2>
+                                <div class="m">
+                                    <i class="pe-7s-pen fa-5x"></i>
+                                </div>
+                                <p class="small">
+                                    Una volta acquisita familiarità con il portale, potrai dare il tuo prezioso contributo rispondendo tu stesso a domande poste da altri colleghi medici o magari fare delle precisazioni rispetto a domande fornite in precedenza.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="hpanel">
+                        <div class="panel-body">
+                            <div class="text-center">
+                                <h2 class="m-b-xs">Commenta</h2>
+                                <div class="m">
+                                    <i class="pe-7s-like fa-5x"></i>
+                                </div>
+                                <p class="small">
+                                    Potrai avere la possibilità di commentare sia le domande che le risposte fornite dai tuoi colleghi. In questo modo, relativamente ad un argomento si verranno a creare delle vere e proprie discussioni utili per approfondire gli argomenti.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="hpanel">
+                        <div class="panel-body">
+                            <div class="text-center">
+                                <h2 class="m-b-xs">Vota</h2>
+                                <div class="m">
+                                    <i class="pe-7s-medal fa-5x"></i>
+                                </div>
+                                <p class="small">
+                                    In maniera estremamente paritaria, tutti possono dare il proprio voto a favore per confermare il contenuto di una risposta o a sfavore per indicarne il prprio disaccordo e magari fornire una risposte alternativa.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="hpanel">
+                        <div class="panel-body">
+                            <div class="text-center">
+                                <h2 class="m-b-xs">Verifica</h2>
+                                <div class="m">
+                                    <i class="pe-7s-cup fa-5x"></i>
+                                </div>
+                                <p class="small">
+                                    In maniera naturale si verrà a creare una classifica sulla base dei voti forniti alle risposte. Questo permetterà di valutare le risposte anche in base alla reputazione ottenuta dal medico che ha fornito la risposta stessa.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            @*<div class="row text-center">
+                <div class="col-md-3">
+                    <h4 class="m-t-lg"><i class="pe-7s-airplay text-success icon-big"></i></h4>
+                    <strong>Domanda</strong>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                </div>
+                <div class="col-md-3">
+                    <h4 class="m-t-lg"><i class="pe-7s-science text-success icon-big"></i></h4>
+                    <strong>Rispondi</strong>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                </div>
+                <div class="col-md-3">
+                    <h4 class="m-t-lg"><i class="pe-7s-display1 text-success icon-big"></i></h4>
+                    <strong>Commenta</strong>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                </div>
+                <div class="col-md-3">
+                    <h4 class="m-t-lg"><i class="pe-7s-cloud-upload text-success icon-big"></i></h4>
+                    <strong>Ricerca</strong>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <h4 class="m-t-lg"><i class="pe-7s-global text-success icon-big"></i></h4>
+                    <strong>Uso dei filtri</strong>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                </div>
+                <div class="col-md-3">
+                    <h4 class="m-t-lg"><i class="pe-7s-battery text-success icon-big"></i></h4>
+                    <strong>Preferiti</strong>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                </div>
+                <div class="col-md-3">
+                    <h4 class="m-t-lg"><i class="pe-7s-users text-success icon-big"></i></h4>
+                    <strong>Vota</strong>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                </div>
+                <div class="col-md-3">
+                    <h4 class="m-t-lg"><i class="pe-7s-ticket text-success icon-big"></i></h4>
+                    <strong>Classifica</strong>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                </div>
+            </div>*@
+
+        </div>
+</section>
+
+<section id="team">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-6 col-md-offset-3">
+                <h2><span class="text-success">Team</span></h2>
+                <p>
+                    Il Team di Me-dico.it è composto di professionisti di vario genere per fornire 
+                    al medico un supporto a 360 gradi per qualunque esigenza pratica della sua 
+                    attività giornaliera
+                </p>
+            </div>
+        </div>
+
+        <div class="row m-t-lg text-center">
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="~/Content/Images/avatar1.jpg" class="img-circle img-small" alt="">
+                    <h4><span>Dott. </span> Nome Cognome</h4>
+                    <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus. </p>
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="~/Content/Images/avatar2.jpg" class="img-circle" alt="">
+                    <h4><span>Dott.sa</span> Nome Cognome</h4>
+                    <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.</p>
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="~/Content/Images/avatar3.jpg" class="img-circle" alt="">
+                    <h4><span>Dott.</span> Nome Cognome</h4>
+                    <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="row m-t-lg text-center">
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="~/Content/Images/avatar4.jpg" class="img-circle" alt="">
+                    <h4><span>Dott.</span> Nome Cognome</h4>
+                    <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus. </p>
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="~/Content/Images/avatar5.jpg" class="img-circle" alt="">
+                    <h4><span>Dott.sa</span> Nome Cognome</h4>
+                    <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.</p>
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="~/Content/Images/avatar6.jpg" class="img-circle" alt="">
+                    <h4><span>Dott.sa</span> Nome Cognome</h4>
+                    <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.</p>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="reg" class="bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-6 col-md-offset-3">
+                <h2><span class="text-success">Registrati</span></h2>
+                <p>
+                    Il portale garantice che al suo interno possono accedere solo ed esclusivamente medici iscritti all'Albo Nazionale dei Medici.
+                    Per fare questo è necessario fornire, oltre le proprie generalità, anche il numero di cartellino tramite un SMS dal proprio cellulare.
+                    Questo permetterà in seguito di verificare l'autenticità delle credenziali fornite.
+                </p>
+            </div>
+        </div>
+
+        <div class="row text-center m-t-lg">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="col-md-6 col-md-offset-2">    
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ProfileUser.FirstName, "Nome", htmlAttributes: new { @class = "col-sm-3 col-md-4 control-label text-right vtmargin7" })
+                        <div class="col-sm-9 col-md-8">
+                            @Html.EditorFor(model => model.ProfileUser.FirstName, new { htmlAttributes = new { @class = "form-control vbmargin10" } })
+                            @Html.ValidationMessageFor(model => model.ProfileUser.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ProfileUser.LastName, "Cognome", htmlAttributes: new { @class = "col-sm-3 col-md-4 control-label text-right vtmargin7" })
+                        <div class="col-sm-9 col-md-8">
+                            @Html.EditorFor(model => model.ProfileUser.LastName, new { htmlAttributes = new { @class = "form-control vbmargin10" } })
+                            @Html.ValidationMessageFor(model => model.ProfileUser.LastName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NickName, "NickName", htmlAttributes: new { @class = "col-sm-3 col-md-4 control-label text-right vtmargin7" })
+                        <div class="col-sm-9 col-md-8">
+                            @Html.EditorFor(model => model.NickName, new { htmlAttributes = new { @class = "form-control vbmargin10" } })
+                            @Html.ValidationMessageFor(model => model.NickName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-sm-3 col-md-4 control-label text-right vtmargin7" })
+                        <div class="col-sm-9 col-md-8">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control vbmargin10" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "col-sm-3 col-md-4 control-label text-right vtmargin7" })
+                        <div class="col-sm-9 col-md-8">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control vbmargin10" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PasswordCheck, "Ridigitare Password", htmlAttributes: new { @class = "col-sm-3 col-md-4 control-label text-right vtmargin7" })
+                        <div class="col-sm-9 col-md-8">
+                            @Html.EditorFor(model => model.PasswordCheck, new { htmlAttributes = new { @class = "form-control vbmargin10" } })
+                            @Html.ValidationMessageFor(model => model.PasswordCheck, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ActivationCode, "Codice Attivazione", htmlAttributes: new { @class = "col-sm-3 col-md-4 control-label text-right vtmargin7" })
+                        <div class="col-sm-9 col-md-8">
+                            @Html.EditorFor(model => model.ActivationCode, new { htmlAttributes = new { @class = "form-control vbmargin10" } })
+                            @Html.ValidationMessageFor(model => model.ActivationCode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 text-right col-sm-offset-4">
+                            <input id="submit" name="submit" type="submit" value="Registrati" class="btn btn-success">
+                        </div>
+                    </div>
+
+            </div>
+        }
+            <div class="col-md-3 text-left">
+                <address>
+                    <strong><span class="navy">Inviare un SMS con il Numero di Cartellino</span></strong><br />
+                    dall'Italia:<br />
+                    <strong>392 123 4567</strong><br />
+                    dall'estero:<br />
+                    <strong>0039 392 123 4567</strong><br />
+                </address>
+                
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(function () {
+
+            // Page scrolling feature
+            $('a.page-scroll').bind('click', function (event) {
+                var link = $(this);
+                $('html, body').stop().animate({
+                    scrollTop: $(link.attr('href')).offset().top - 50
+                }, 500);
+                event.preventDefault();
+            });
+
+            $('body').scrollspy({
+                target: '.navbar-fixed-top',
+                offset: 80
+            });
+            if (@pos)  $("#Registrazione").trigger("click");
+        });
+
+        $(document).ready(function() {
+            $('#page-top').particleground({
+                dotColor: '#111111',
+                lineColor: '#000000'
+            });
+
+        });
+    </script>
+}

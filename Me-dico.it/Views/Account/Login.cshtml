@@ -1,0 +1,77 @@
+﻿@using Me_dico.it.Models
+@model LoginViewModel
+@{
+    Layout = "~/Views/Shared/_Layout_Blank.cshtml";
+    ViewBag.Title = "";
+}
+<div class="backgroundLogin">
+
+</div>
+<div class="login-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center m-b-md">
+                <img src="~/Content/images/logo_white.png" width="300" />
+                <h3>PLEASE LOGIN TO APP</h3>
+            </div>
+            <div class="hpanel hpanelLogin">
+                <div class="panel-body panel-body-login">
+                    <section id="loginForm">
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                            @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "example@gmail.com" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            <br />
+
+                            @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+                            <span class="help-block small">Your strong password</span>
+
+                            @Html.CheckBoxFor(m => m.RememberMe, new { @class = "icheckbox_square-green checkbox" })
+                            <span> </span> @Html.LabelFor(m => m.RememberMe)
+                            <br />
+                            <br />
+                            <div class="col-md-12">
+                                <input type="submit" value="Log in" class="btn btn-success btn-block" />
+                            </div>
+                                <br />
+                                <br />                                
+                                <br />
+                                <div class="col-md-12">
+                                    Se non sei ancora registrato <span>@Html.ActionLink("clicca qui", "Register", "Account", new object { }, new { @class = "linkRegistrati" })</span>
+                                </div>
+
+                                @* Enable this once you have account confirmation enabled for password reset functionality
+                                    <p>
+                                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                    </p>*@
+                        }
+                    </section>
+                </div>
+                @*<div class="col-md-4">
+                        <section id="socialLoginForm">
+                            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                        </section>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+
+    @Styles.Render("~/bundles/bootstrapCheckbox/css")
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/validation/js")
+}

@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Blank.cshtml";
+    ViewBag.Title = "Error_500";
+}
+
+<div class="error-container">
+    <i class="pe-7s-way text-success big-icon"></i>
+    <h1>500</h1>
+    <strong>OOOOOOPPSSSSSSS!!!!!!</strong>
+    <p>
+        Il server ha effettuato un'operazione che ha causato un errore inaspettato.
+    </p>
+    <p>
+        Ci scusiamo per l'inconveniente
+    </p>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-xs btn-success">Torna alla Home Page</a>
+</div>
+

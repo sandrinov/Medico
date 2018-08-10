@@ -1,0 +1,323 @@
+﻿@*@model Me_dico.it.Models.QuestionNewModel*@
+@{
+    ViewBag.Title = "New Question";
+}
+
+<div class="normalheader transition animated fadeIn">
+    <div class="hpanel">
+        <div class="panel-body">
+            <a class="small-header-action" href="">
+                <div class="clip-header">
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+            </a>
+
+            <div id="hbreadcrumb" class="pull-right m-t-lg">
+                <ol class="hbreadcrumb breadcrumb">
+                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li class="active">
+                        <span>Nuova Domanda</span>
+                    </li>
+                </ol>
+            </div>
+            <h2 class="font-light m-b-xs">
+                Nuova Domanda
+            </h2>
+        </div>
+    </div>
+</div> <!--  End BreadCrumbs  -->
+
+<div class="content animate-panel">
+    <div class="row">
+        <div class="col-lg-6">
+            <select class="js-example-basic-multiple" multiple="multiple" style="width: 100%" id="select-tag-list">
+               
+            </select>
+        </div>
+        <div class="col-lg-6">
+
+
+
+
+                <a href="#" class="btn btn-info pull-right" data-toggle="modal" data-target="#suggerimenti" role="button">Suggerimenti</a>
+                <div class="modal fade hmodal-success" id="suggerimenti" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="color-line"></div>
+                            <div class="modal-header">
+                                <h4 class="modal-title">Nuova Domanda</h4>
+                                <small class="font-bold">Come si scrive una buona domanda</small>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                    <strong>Attieniti agli argomenti</strong> Esistono una serie di argomenti sulla base dei quali
+                                    sono impostate tutte le domande e le risposte che troverai nel sito. Evita per favore di fare
+                                    domande o commenti che aprirebbero discussioni infinite e alla fine inutili.
+                                </p>
+                                <p>
+                                    <strong>Sii specifico</strong> Non fare domande vaghe (o otterrai solo delle vaghe risposte). Non
+                                    inserire domande multiple in un solo testo di domanda, ma sii il più preciso e circoscritto possibile.
+                                </p>
+                                <p>
+                                    <strong>Sii aperto</strong> La risposta alla tua domanda non può essere sempre quella che ti aspettavi, ma questo non significa che sia sbagliata. Una risposta conclusiva non è sempre possibile. In caso di dubbio, chiedi ai colleghi di citare le loro fonti, o spiegare come / dove abbiano acquisito una certa esperienza.
+                                    Anche se alcuni non sono d'accordo con te, o se non ti aspettavi certe risposte, ricordati che qui ci sono colleghi che si stanno aiutando per migliorare il proprio lavoro.
+
+                                </p>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+    <br />
+    <div class="row">
+        <div class="col-lg-12">
+            <label> Inserire nel titolo la domanda essenziale con le parole chiave più importanti</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="hpanel forum-box">
+                <div class="hpanel">
+                    <div class="panel-heading">
+                        <div class="panel-tools">
+                            <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                            <a class="closebox"><i class="fa fa-times"></i></a>
+                        </div>
+
+                        <div>Digitare il Titolo:</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <input id="txt_question_title" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            @*<div class="form-group">
+                <label class="col-sm-1 control-label">Titolo</label>
+
+                <div class="col-sm-11"><input id="txt_question_title" type="text" class="form-control"></div>
+            </div>*@
+   </div> <!-- End row title  -->
+    <br /><br />
+    <div class="row">
+            <div class="col-lg-12">
+                <label>Inserire nel campo successivo la domanda in maniera articolata e più dettagliata possibile</label>
+
+            </div>
+    </div>
+    <div class="row">
+            <div class="col-lg-12">
+                <div class="hpanel forum-box">
+
+
+                    <div class="hpanel">
+                        <div class="panel-heading">
+                            <div class="panel-tools">
+                                <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                                <a class="closebox"><i class="fa fa-times"></i></a>
+                            </div>
+
+                            <div>Digitare la domanda:</div>
+                        </div>
+                        <div class="panel-body">
+                            @*@if (Request.Browser.Browser == "Firefox")
+                            {
+                                <textarea class="form-control summernote"></textarea>
+                            }
+                            else
+                            {
+                                <div class="summernote">
+                                </div>
+                            }*@
+                            <textarea class="form-control" rows="7" id="summernote"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="row">
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <div class="col-sm-8">
+                    <button class="btn btn-default" id="btn_reset">Cancella</button>
+                    <button class="btn btn-primary" id="btn_new_Question">Invia domanda</button>
+                </div>
+            </div>
+        </div>
+</div>
+
+    @section Styles {
+        @*@Styles.Render("~/bundles/summernote/css")*@
+        @Styles.Render("~/bundles/sweetAlert/css")
+        @Styles.Render("~/bundles/toastr/css")
+        @Styles.Render("~/bundles/select2/css")
+
+    }
+   
+
+    @section Scripts {
+        @*@Scripts.Render("~/bundles/summernote/js")*@
+        @Scripts.Render("~/bundles/json/js")
+        @Scripts.Render("~/bundles/sweetAlert/js")
+        @Scripts.Render("~/bundles/toastr/js")
+        @Scripts.Render("~/bundles/select2/js")
+        @Scripts.Render("~/bundles/placeholders/js")
+
+        <script type="text/javascript">
+
+            $(function () {
+
+                var server_api_url = Medico_it.config.apiServerAddress;
+                var server_url = Medico_it.config.mvcServerAddress;
+
+                // multi select
+                $(".js-example-basic-multiple").select2(
+                    {
+                        language:"it",
+                        placeholder: 'Seleziona almeno 1 tag (Max. 3)',
+                        maximumSelectionLength: 3
+                    });
+
+                // fill the select
+                $.ajax({
+                    cache: false,
+                    type: "GET",
+                    url: server_api_url + 'api/tagslist'  
+                }).done(function (tagslist) {
+                    var selecttaglist = $("#select-tag-list");
+                    //don't forget error handling!
+                    $.each(tagslist, function (i, tag) {
+                        selecttaglist.append($("<option />").val(tag.id).text(tag.description));
+                    });
+
+                });
+
+
+
+                
+
+                // Initialize summernote plugin
+                //$('.summernote').summernote({
+                //    airMode: true,
+                //});
+
+                //$('#btn_reset').on('click', function () {
+                //    $('.summernote').text('');
+                //});
+
+                $('#btn_reset').on('click', function () {
+                    $('#summernote').val('');
+                });
+
+                $('#btn_new_Question').on('click', function () {
+
+                    //disable buttons until the end
+                    $('#btn_new_Question').prop('disabled', true);
+                    $('#btn_reset').prop('disabled', true);
+
+                    var question_title = $('#txt_question_title').val();
+                    //var question_text = $('.summernote').text().trim();
+                    var question_text = $('#summernote').val().trim();
+                    question_text.replace(/\r?\n|\r/g, " ");
+
+                    var tagsToBind = [];
+                    var selectedTags = $('#select-tag-list option:selected');
+
+                    var err_msg = '';
+                    var isValid = true;
+                    
+                    if (question_title == ''){
+                        var err_msg = 'Inserire il campo Titolo';
+                        var isValid = false;
+                    }
+                    if (question_text == ''){
+                        var err_msg = 'Inserire il testo della domanda';
+                        var isValid = false;
+                    }
+                    if (selectedTags.length == 0){
+                        var err_msg = 'Selezionare almeno un Tag (Max. 3)';
+                        var isValid = false;
+                    }
+
+
+
+                    if (isValid) {
+                        $.each(selectedTags, function (i, selectedTag) {
+                            tagsToBind.push({ Id: selectedTag.value, Description: selectedTag.text });
+                        });
+
+
+                        var QuestionNewModel = {
+                            Question: {
+                                Description: question_text,
+                                Title: question_title,
+                                Tags: tagsToBind
+                            }
+                        };
+
+                        $.ajax({
+                            cache: false,
+                            type: "POST",
+                            url: server_url + 'Question/NewQuestion',
+                            contentType: "application/json;charset=utf-8",
+                            dataType: "json",
+                            data: $.toJSON(QuestionNewModel)
+                        }).done(function (result) {
+                            // now update adjustment
+                            if (result.success) {
+                                swal({
+                                    title: "Perfetto!",
+                                    text: result.message,
+                                    type: "success"
+                                });
+                                // clear fields
+                                var $multiselecttags = $(".js-example-basic-multiple").select2();
+                                $multiselecttags.val(null).trigger("change");
+
+                                var question_title = $('#txt_question_title').val('');
+                                //var question_text = $('.summernote').text('');
+                                var question_text = $('#summernote').val('');
+
+                               
+                            }
+                            else {
+                                swal({
+                                    title: "Attenzione!",
+                                    text: result.message,
+                                    type: "warning"
+                                });
+                            }
+
+                            //enable buttons until the end
+                            $('#btn_new_Question').prop('disabled', false);
+                            $('#btn_reset').prop('disabled', false);
+                        });//end done
+                    }
+                    else {
+                        swal({
+                            title: "Attenzione!",
+                            text: err_msg,
+                            type: "warning"
+                        });
+                        //enable buttons until the end
+                        $('#btn_new_Question').prop('disabled', false);
+                        $('#btn_reset').prop('disabled', false);
+                    }
+
+                   
+
+                }); // end onClick
+
+            }); // end jQuery
+        </script>
+    }

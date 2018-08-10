@@ -1,0 +1,21 @@
+﻿<div class="page-header">
+    <h1>
+        Logout
+        <small>Ora siete logged out</small>
+    </h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center m-b-md">
+                <img class="logoLogin" src="/images/logo_white.png" width="300" />
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div ng-show="model.redirectUrl">
+                    Clicca su <a ng-href="{{model.redirectUrl}}">Me-dico.it</a> per tornare all'applicazione
+                    <span ng-bind="model.clientName"></span>
+                </div>
+                <iframe class="signout" ng-repeat="url in model.iFrameUrls" ng-src="{{url}}"></iframe>
+            </div>
+        </div>
+    </div>
+   
+</div>

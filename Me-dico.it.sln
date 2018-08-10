@@ -1,0 +1,156 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Me-dico.it", "Me-dico.it\Me-dico.it.csproj", "{4CAB0546-1B05-4BCE-A7CB-EF8CD61A57E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Me-dico.it.Constants", "Me-dico.it.Constants\Me-dico.it.Constants.csproj", "{3230CD2B-3EC1-4041-A5D0-2F070CEBB68C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Me-dico.it.Repository", "Me-dico.it.Repository\Me-dico.it.Repository.csproj", "{B7D828E0-3879-4375-B719-180426159E7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Me-dico.it.API", "Me-dico.it.API\Me-dico.it.API.csproj", "{D66FF94F-6419-474B-965E-5FDC0DA9C569}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Me-dico.it.EFEntity", "Me-dico.it.EFEntity\Me-dico.it.EFEntity.csproj", "{0B5C7E85-E29F-46BD-AB99-D7077A3D9C45}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{DBB6C1CF-A931-4F0F-A90A-D25EE759ADA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Me-dico.it.IdentitySrv\Core\Core.csproj", "{FB9E026E-BAB3-498A-A954-B93B05C146A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Configuration", "Me-dico.it.IdentitySrv\Host.Configuration\Host.Configuration.csproj", "{9FE87DA1-73E0-4929-BC04-9249901D007A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Web", "Me-dico.it.IdentitySrv\Host.Web\Host.Web.csproj", "{C41ECC23-BB27-4BDD-990E-4908B872F12C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServerRepository", "IdentityRepository\IdentityServerRepository.csproj", "{AAA29086-BEAA-440A-B5EF-5880A6F4A97F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Me-dico.it.BL", "Me-dico.it.BL\Me-dico.it.BL.csproj", "{9F793745-DC50-4A5C-BCD8-243E88A5B365}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Me-dico.it.Model", "Me-dico.it.Model\Me-dico.it.Model.csproj", "{876CB955-4795-4583-A99D-1C63F38B4280}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		AzureWebSites|Any CPU = AzureWebSites|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4CAB0546-1B05-4BCE-A7CB-EF8CD61A57E5}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{4CAB0546-1B05-4BCE-A7CB-EF8CD61A57E5}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
+		{4CAB0546-1B05-4BCE-A7CB-EF8CD61A57E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CAB0546-1B05-4BCE-A7CB-EF8CD61A57E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CAB0546-1B05-4BCE-A7CB-EF8CD61A57E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CAB0546-1B05-4BCE-A7CB-EF8CD61A57E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3230CD2B-3EC1-4041-A5D0-2F070CEBB68C}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{3230CD2B-3EC1-4041-A5D0-2F070CEBB68C}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
+		{3230CD2B-3EC1-4041-A5D0-2F070CEBB68C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3230CD2B-3EC1-4041-A5D0-2F070CEBB68C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3230CD2B-3EC1-4041-A5D0-2F070CEBB68C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3230CD2B-3EC1-4041-A5D0-2F070CEBB68C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7D828E0-3879-4375-B719-180426159E7D}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{B7D828E0-3879-4375-B719-180426159E7D}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
+		{B7D828E0-3879-4375-B719-180426159E7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7D828E0-3879-4375-B719-180426159E7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7D828E0-3879-4375-B719-180426159E7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7D828E0-3879-4375-B719-180426159E7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D66FF94F-6419-474B-965E-5FDC0DA9C569}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{D66FF94F-6419-474B-965E-5FDC0DA9C569}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
+		{D66FF94F-6419-474B-965E-5FDC0DA9C569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D66FF94F-6419-474B-965E-5FDC0DA9C569}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D66FF94F-6419-474B-965E-5FDC0DA9C569}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D66FF94F-6419-474B-965E-5FDC0DA9C569}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B5C7E85-E29F-46BD-AB99-D7077A3D9C45}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{0B5C7E85-E29F-46BD-AB99-D7077A3D9C45}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
+		{0B5C7E85-E29F-46BD-AB99-D7077A3D9C45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B5C7E85-E29F-46BD-AB99-D7077A3D9C45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B5C7E85-E29F-46BD-AB99-D7077A3D9C45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B5C7E85-E29F-46BD-AB99-D7077A3D9C45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB9E026E-BAB3-498A-A954-B93B05C146A5}.AzureWebSites|Any CPU.ActiveCfg = AzureWebSites|Any CPU
+		{FB9E026E-BAB3-498A-A954-B93B05C146A5}.AzureWebSites|Any CPU.Build.0 = AzureWebSites|Any CPU
+		{FB9E026E-BAB3-498A-A954-B93B05C146A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB9E026E-BAB3-498A-A954-B93B05C146A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB9E026E-BAB3-498A-A954-B93B05C146A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB9E026E-BAB3-498A-A954-B93B05C146A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FE87DA1-73E0-4929-BC04-9249901D007A}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{9FE87DA1-73E0-4929-BC04-9249901D007A}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
+		{9FE87DA1-73E0-4929-BC04-9249901D007A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FE87DA1-73E0-4929-BC04-9249901D007A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FE87DA1-73E0-4929-BC04-9249901D007A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FE87DA1-73E0-4929-BC04-9249901D007A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C41ECC23-BB27-4BDD-990E-4908B872F12C}.AzureWebSites|Any CPU.ActiveCfg = AzureWebSites|Any CPU
+		{C41ECC23-BB27-4BDD-990E-4908B872F12C}.AzureWebSites|Any CPU.Build.0 = AzureWebSites|Any CPU
+		{C41ECC23-BB27-4BDD-990E-4908B872F12C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C41ECC23-BB27-4BDD-990E-4908B872F12C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C41ECC23-BB27-4BDD-990E-4908B872F12C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C41ECC23-BB27-4BDD-990E-4908B872F12C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAA29086-BEAA-440A-B5EF-5880A6F4A97F}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{AAA29086-BEAA-440A-B5EF-5880A6F4A97F}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
+		{AAA29086-BEAA-440A-B5EF-5880A6F4A97F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAA29086-BEAA-440A-B5EF-5880A6F4A97F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAA29086-BEAA-440A-B5EF-5880A6F4A97F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAA29086-BEAA-440A-B5EF-5880A6F4A97F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F793745-DC50-4A5C-BCD8-243E88A5B365}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{9F793745-DC50-4A5C-BCD8-243E88A5B365}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
+		{9F793745-DC50-4A5C-BCD8-243E88A5B365}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F793745-DC50-4A5C-BCD8-243E88A5B365}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F793745-DC50-4A5C-BCD8-243E88A5B365}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F793745-DC50-4A5C-BCD8-243E88A5B365}.Release|Any CPU.Build.0 = Release|Any CPU
+		{876CB955-4795-4583-A99D-1C63F38B4280}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{876CB955-4795-4583-A99D-1C63F38B4280}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
+		{876CB955-4795-4583-A99D-1C63F38B4280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{876CB955-4795-4583-A99D-1C63F38B4280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{876CB955-4795-4583-A99D-1C63F38B4280}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{876CB955-4795-4583-A99D-1C63F38B4280}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FB9E026E-BAB3-498A-A954-B93B05C146A5} = {DBB6C1CF-A931-4F0F-A90A-D25EE759ADA6}
+		{9FE87DA1-73E0-4929-BC04-9249901D007A} = {DBB6C1CF-A931-4F0F-A90A-D25EE759ADA6}
+		{C41ECC23-BB27-4BDD-990E-4908B872F12C} = {DBB6C1CF-A931-4F0F-A90A-D25EE759ADA6}
+		{AAA29086-BEAA-440A-B5EF-5880A6F4A97F} = {DBB6C1CF-A931-4F0F-A90A-D25EE759ADA6}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 12
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://fabiodegioia.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Me-dico.it.Constants\\Me-dico.it.Constants.csproj
+		SccProjectName1 = Me-dico.it.Constants
+		SccLocalPath1 = Me-dico.it.Constants
+		SccProjectUniqueName2 = Me-dico.it\\Me-dico.it.csproj
+		SccProjectName2 = Me-dico.it
+		SccLocalPath2 = Me-dico.it
+		SccProjectUniqueName3 = Me-dico.it.Repository\\Me-dico.it.Repository.csproj
+		SccProjectName3 = Me-dico.it.Repository
+		SccLocalPath3 = Me-dico.it.Repository
+		SccProjectUniqueName4 = Me-dico.it.API\\Me-dico.it.API.csproj
+		SccProjectName4 = Me-dico.it.API
+		SccLocalPath4 = Me-dico.it.API
+		SccProjectUniqueName5 = Me-dico.it.EFEntity\\Me-dico.it.EFEntity.csproj
+		SccProjectName5 = Me-dico.it.EFEntity
+		SccLocalPath5 = Me-dico.it.EFEntity
+		SccProjectUniqueName6 = Me-dico.it.IdentitySrv\\Core\\Core.csproj
+		SccProjectTopLevelParentUniqueName6 = Me-dico.it.sln
+		SccProjectName6 = Me-dico.it.IdentitySrv/Core
+		SccLocalPath6 = Me-dico.it.IdentitySrv\\Core
+		SccProjectUniqueName7 = Me-dico.it.IdentitySrv\\Host.Configuration\\Host.Configuration.csproj
+		SccProjectTopLevelParentUniqueName7 = Me-dico.it.sln
+		SccProjectName7 = Me-dico.it.IdentitySrv/Host.Configuration
+		SccLocalPath7 = Me-dico.it.IdentitySrv\\Host.Configuration
+		SccProjectUniqueName8 = Me-dico.it.IdentitySrv\\Host.Web\\Host.Web.csproj
+		SccProjectTopLevelParentUniqueName8 = Me-dico.it.sln
+		SccProjectName8 = Me-dico.it.IdentitySrv/Host.Web
+		SccLocalPath8 = Me-dico.it.IdentitySrv\\Host.Web
+		SccProjectUniqueName9 = IdentityRepository\\IdentityServerRepository.csproj
+		SccProjectTopLevelParentUniqueName9 = Me-dico.it.sln
+		SccProjectName9 = IdentityRepository
+		SccLocalPath9 = IdentityRepository
+		SccProjectUniqueName10 = Me-dico.it.BL\\Me-dico.it.BL.csproj
+		SccProjectName10 = Me-dico.it.BL
+		SccLocalPath10 = Me-dico.it.BL
+		SccProjectUniqueName11 = Me-dico.it.Model\\Me-dico.it.Model.csproj
+		SccProjectName11 = Me-dico.it.Model
+		SccLocalPath11 = Me-dico.it.Model
+	EndGlobalSection
+EndGlobal

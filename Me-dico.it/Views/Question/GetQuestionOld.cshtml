@@ -1,0 +1,893 @@
+﻿@model Me_dico.it.Models.QuestionResponsesViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var question = Model.Question;
+}
+
+<!--           Breadcrumbs              -->
+<div class="normalheader transition animated fadeIn">
+    <div class="hpanel">
+        <div class="panel-body">
+            <a class="small-header-action" href="">
+                <div class="clip-header">
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+            </a>
+
+            <div id="hbreadcrumb" class="pull-right m-t-lg">
+                <ol class="hbreadcrumb breadcrumb">
+                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li class="active">
+                        <span>Dettaglio Domanda</span>
+                    </li>
+                </ol>
+            </div>
+            <h2 class="font-light m-b-xs">
+                Dettaglio domanda
+            </h2>
+            <small>Rispondi, Inserisci commenti alla domanda, alle risposte, Dai il tuo Voto</small>
+        </div>
+    </div>
+</div>
+
+<!--              CONTENT               -->
+<div class="content animate-panel">
+
+    <!--                QUESTION            -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="hpanel forum-box">
+                <div class="panel-heading">
+                    @*<span class="pull-right">
+                              Postato il @Html.DisplayFor(m => m.Question.PostedTime)
+                              <span>Da <strong> @Html.DisplayFor(m => m.Question.UserName)</strong></span>
+                        </span>*@
+                    <span class="lead"><strong>@Html.DisplayFor(m => m.Question.Title)</strong> </span>
+                    <a href="#row-response" class="btn btn-info pull-right page-scroll" role="button">Rispondi</a>
+                </div>
+                <div class="panel-body">
+                    <div class="media">
+                        <div class="media-image pull-left">
+                            <img src="~/Content/Images/Users/@{@question.UserId}.png" alt="profile-picture">
+                            <div class="author-info">
+                                <strong> @Html.DisplayFor(m => m.Question.UserName)</strong><br>
+                                @Html.DisplayFor(m => m.Question.UpdateDate)
+                                <div class="badges">
+                                    <button class="btn btn-warning2 btn-xs" type="button"><i class="fa fa-group"></i><br />Visite @Html.DisplayFor(m => m.Question.ViewsCount)</button>
+                                    <button class="btn btn-primary btn-xs" type="button"><i class="fa fa-commenting-o"></i><br />Risposte @Html.DisplayFor(m => m.Question.AnswersCount)</button>
+                                    @*<button class="btn btn-warning btn-xs" type="button"><i class="fa fa-thumbs-o-up"></i><br />Voti @Html.DisplayFor(m => m.Question.VoteCount)</button>*@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            @Html.DisplayFor(m => m.Question.Description)
+                            
+                            <div class="row">                                   
+                               <div class="col-md-10 col-md-offset-1">
+                                   <div class="hpanel hblue"><br />
+                                       <div class="panel-heading hbuilt">
+                                                    <div class="panel-tools">
+                                                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                                                        <a class="closebox"><i class="fa fa-times"></i></a>
+                                                    </div>
+                                                    Commenti alla domanda
+                                       </div>
+                                        <div class="panel-body">
+                                            <ul id="lst-question-comments">
+                                            @foreach (var question_comment in question.QuestionComments)
+                                            {
+                                                <li>
+                                                    <i>@question_comment.Description <span><a href="/Users/@question_comment.UserId" class="text-info"> ( @question_comment.UserName )</a></span><span> @question_comment.UpdateDate</span></i>
+                                                </li>
+                                            }
+                                            </ul>
+                                        </div> <!-- End Panel Body Commenti ( Domanda ) -->
+                                       <div class="panel-footer">
+                                           <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapse-question-comments" aria-expanded="false" aria-controls="collapse-question-comments">
+                                               Aggiungi un Commento
+                                           </button>
+                                           <div class="collapse" id="collapse-question-comments">
+                                               <div class="hpanel">
+                                                   <div class="panel-heading">
+                                                       <div>Digitare il commento:</div>
+                                                   </div>
+                                                   <div class="panel-body">
+                                                       <div class="question-comments-editor">
+                                                       </div>
+                                                       <br />
+                                                       <div class="form-group">
+                                                           <div class="col-sm-8">
+                                                               <button class="btn btn-default" id="btn_reset_questioncomment">Cancella</button>
+                                                               <button class="btn btn-success" id="btn_new_questioncomment">Inserisci</button>
+                                                           </div>
+                                                       </div>
+                                                   </div>
+                                               </div> <!-- End Panel Nuovo Commento alla Domanda-->
+                                           </div><!-- End Collapse Div -->
+                                       </div> <!-- End Panel Footer ( Domanda ) -->
+                                   </div> <!-- End Panel Commenti ( Domanda ) -->
+                               </div>
+                            </div> <!-- End ROW Commenti ( Domanda ) -->
+                        </div>
+                        <div class="media-bottom"><br/>
+                            @foreach (var tag in Model.Question.Tags)
+                            {
+
+                                <a href='@Url.Action("GetQuestionsByTag", "Question", new { page=1, tagId = @tag.Id, tagName=@tag.Description })' class="btn btn-info" role="button">@Html.DisplayFor(t => tag.Description)</a>
+
+                                    
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End Panel Domanda  -->
+        </div> <!-- End Column 12  -->
+    </div><!-- End ROW Domanda -->
+
+    <!--                RESPONSES            -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="hpanel forum-box" id="responses-panel">
+                <div class="panel-heading">
+                    <h3 id="h3-num-risposte"> @Model.Question.Answers.Count() Risposte </h3>
+                </div>
+                @foreach (var item in Model.Question.Answers)
+                {
+                    <div class="panel-body">
+                            <div class="media">
+                                <div class="media-image pull-left">
+                                    <img src="~/Content/Images/Users/@{@item.UserId}.png" alt="profile-picture">
+                                    <div class="author-info">
+                                        <strong> @Html.DisplayFor(modelItem => item.UserName)</strong><br>
+                                        @Html.DisplayFor(modelItem => item.UpdateDate)
+                                        <div class="badges">
+                                            <i class="fa fa-star text-warning" id="vote-answer-@item.Id">@Html.DisplayFor(modelItem => item.VoteCount)</i>
+                                        </div>
+                                        <div class="">
+                                            <span class="input-group-btn-vertical">
+                                                <button class="btn btn-warning2 btn-vote-minus" type="button" idanswer="@item.Id"><i class="fa fa-thumbs-o-down"></i></button>
+                                                <button class="btn btn-success btn-vote-plus" type="button" idanswer="@item.Id"><i class="fa fa-thumbs-o-up"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    @Html.DisplayFor(modelItem => item.Description)<br />
+                                    <div class="row">
+                                        <div class="col-md-10 col-md-offset-1">
+                                            <div class="hpanel horange">
+                                                <br />
+                                                <div class="panel-heading hbuilt">
+                                                    <div class="panel-tools">
+                                                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                                                        <a class="closebox"><i class="fa fa-times"></i></a>
+                                                    </div>
+                                                    Commenti alla risposta
+                                                </div>
+                                                <div class="panel-body">
+                                                    <ul id="lst-answer-comments-@item.Id">
+                                                    @foreach (var answer_comment in item.AnswerComments)
+                                                    {
+                                                        <li>
+                                                            @answer_comment.Description
+                                                            <br />
+                                                            <i>
+                                                                <span>( <a href="/Users/@answer_comment.UserId" class="text-info">
+                                                                        @answer_comment.NickName
+                                                                    </a> )
+                                                                </span><span> @answer_comment.UpdateDate </span>
+                                                            </i>
+                                                        </li>
+                                                    }
+                                                    </ul>
+                                                </div>
+                                                <div class="panel-footer">
+                                                    <button class="btn btn-warning btn-sm" type="button" data-toggle="collapse" data-target="#collapse-answer-comments-@item.Id" aria-expanded="false" aria-controls="collapse-answer-comments-@item.Id">
+                                                        Aggiungi un Commento
+                                                    </button>
+                                                    <div class="collapse" id="collapse-answer-comments-@item.Id">
+                                                        <div class="hpanel">
+                                                            <div class="panel-heading">
+                                                                <div>Digitare il commento:</div>
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <div id="answer-comments-editor-@item.Id" class="answer-comments-editor">
+                                                                </div>
+                                                                <br />
+                                                                <div class="form-group ">
+                                                                    <div class="col-sm-8 " >
+                                                                        <button class="btn btn-default btn_reset_answercomment" idanswer="@item.Id">Cancella</button>
+                                                                        <button class="btn btn-success btn_new_answercomment" idanswer="@item.Id">Inserisci</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div> <!-- End Panel Nuovo Commento alla Domanda-->
+                                                    </div><!-- End Collapse Div -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                    </div>
+                }
+            </div> <!-- End responses panel -->
+        </div>
+    </div>
+
+    <!-- Give your response -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h3><label>Dai la tua risposta</label></h3>
+
+        </div>
+    </div>
+    <div class="row" id="row-response">
+        <div class="col-lg-12">
+            <div class="hpanel forum-box">
+
+
+                <div class="hpanel">
+                    <div class="panel-heading">
+                        <div class="panel-tools">
+                            <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                            <a class="closebox"><i class="fa fa-times"></i></a>
+                        </div>
+
+                        <div>Inserire la risposta:</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="response-editor">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="hr-line-dashed"></div>
+        <div class="form-group">
+            <div class="col-sm-8">
+                <button class="btn btn-default" id="btn_reset">Cancella</button>
+                <button class="btn btn-primary" id="btn_response">Rispondi</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Styles {
+    @Styles.Render("~/bundles/summernote/css")
+    @Styles.Render("~/bundles/sweetAlert/css")
+    @Styles.Render("~/bundles/toastr/css")
+    @*@Styles.Render("~/bundles/scrolling-nav/css")*@
+}
+
+
+
+@section Scripts
+{
+@Scripts.Render("~/bundles/summernote/js")
+@Scripts.Render("~/bundles/json/js")
+@Scripts.Render("~/bundles/sweetAlert/js")
+@Scripts.Render("~/bundles/toastr/js")
+
+
+<script type="text/javascript">
+    $(function () {
+
+        var server_url = Medico_it.config.mvcServerAddress;
+
+        //Get The Question ID
+        var path = window.location.pathname;
+        // split the pathname /Question/GetQuestion/{id}
+        var splitted_path = path.split('/');
+        // thake the last element with the {id} and convert it in integer
+        var questionId = parseInt(splitted_path[splitted_path.length - 1]);
+
+
+
+        //set the default cursor for the buttons in badges class
+        $('.badges .btn').css('cursor', 'default');
+
+        //clear the editors
+        $('.response-editor').text() == '';
+        $('.question-comments-editor').text() == '';
+        $('.answer-comments-editor').text() == '';
+
+
+        // Page scrolling feature
+        $('a.page-scroll').bind('click', function (event) {
+            var link = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $(link.attr('href')).offset().top - 50
+            }, 500);
+            event.preventDefault();
+        });
+
+        $('body').scrollspy({
+            target: '.navbar-fixed-top',
+            offset: 80
+        });
+
+
+
+        /****************  Answer Vote event handler ***********/
+
+        $('.btn-vote-minus').on('click', function () {
+
+            var answerId = parseInt($(this).attr('idanswer'));
+            var votecontainer = $('#vote-answer-' + answerId);
+            var numvote = parseInt(votecontainer.text());
+            if (numvote <= 0)
+            {
+                swal({
+                    title: "Attenzione!",
+                    text: "La votazione ha raggiunto il suo minimo"
+                });
+            }
+            else
+            {
+                var AnswerVoteViewModel = {
+                    AnswerId : answerId,
+                    Vote : "-"
+                }
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: server_url + 'Answer/VoteAnswer',
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    data: $.toJSON(AnswerVoteViewModel)
+                }).done(function (result) {
+                    if (result.success)
+                    {
+                        swal({
+                            title: "Grazie!",
+                            text: "Grazie per aver contribuito con il tuo voto!",
+                            type: "success"
+                        });
+                        numvote--;
+                        votecontainer.text(numvote);
+                    }
+                    else
+                    {
+                        swal({
+                            title: "Attenzione!",
+                            text: "La votazione non è stata registrata"
+                        });
+                    }
+                });
+            }
+        }); // end vote minus
+
+        $('.btn-vote-plus').on('click', function () {
+
+            var answerId = parseInt($(this).attr('idanswer'));
+            var votecontainer = $('#vote-answer-' + answerId);
+            var numvote = parseInt(votecontainer.text());
+
+            var AnswerVoteViewModel = {
+                AnswerId: answerId,
+                Vote: "+"
+            }
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: server_url + 'Answer/VoteAnswer',
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                data: $.toJSON(AnswerVoteViewModel)
+            }).done(function (result) {
+                if (result.success) {
+                    swal({
+                        title: "Grazie!",
+                        text: "Grazie per aver contribuito con il tuo voto!",
+                        type: "success"
+                    });
+                    numvote++;
+                    votecontainer.text(numvote);
+                }
+                else {
+                    swal({
+                        title: "Attenzione!",
+                        text: "La votazione non è stata registrata"
+                    });
+                }
+            });
+        });
+
+        /****************  Question Comment event handler ***********/
+        $('.question-comments-editor').summernote({
+            airMode: true
+        });
+
+        $('#btn_reset_questioncomment').on('click', function () {
+            $('.question-comments-editor').text('');
+            $('#collapse-question-comments').removeClass("in");
+        });
+
+        $('#btn_new_questioncomment').on('click', function () {
+
+            if ($('.question-comments-editor').text().trim() == '') {
+                swal({
+                    title: "Attenzione!",
+                    text: "Il campo testo del commento è obbligatorio"
+                });
+            }
+            else
+            {
+                var question_comment_text = $('.question-comments-editor').text();
+
+                var QuestionCommentNewViewModel = {
+                      QuestionComment: {
+                        QuestionSource: {
+                            Id: questionId
+                        },
+                        Description: question_comment_text
+                    }
+                }
+
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: server_url + 'Question/NewQuestionComment',
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    data: $.toJSON(QuestionCommentNewViewModel)
+                }).done(function (result) {
+
+                    if (result.success) {
+                        swal({
+                            title: "Grazie!",
+                            text: "Commento inserito correttamente",
+                            type: "success"
+                        });
+
+                        var newID = result.newID;
+                        var UserName = result.UserName;
+                        var UserId = result.UserId;
+                        var Description = result.Description;
+                        var UpdateDate = result.UpdateDate;
+
+
+                        var $newQuestionComment = create_new_questioncomment(UserName, UserId, Description, UpdateDate);
+                        $('#lst-question-comments').append($newQuestionComment).find('li.new-question-comment').fadeIn('slow');
+
+                        $('.question-comments-editor').text('');
+                        $('#collapse-question-comments').removeClass("in");
+
+
+                    }
+                    else {
+                        swal({
+                            title: "Attenzione!",
+                            text: result.message,
+                            type: "warning"
+                        });
+                    }
+                }); // end ajax insert
+
+            } // end else validation (OK)
+        }); // end function new question comment click
+
+        /****************  Answer Comment event handlers ***********/
+
+        $('.answer-comments-editor').summernote({
+            airMode: true
+        });
+
+        $('.btn_reset_answercomment').on('click', function () {
+            $($(this).closest('.panel-body').children()[0]).text('');
+            //debugger;
+            //$('#collapse-answer-comments').removeClass("in");
+
+        });
+
+        $('.btn_new_answercomment').on('click', function () {
+
+            var answer_comment_text = $($(this).closest('.panel-body').children()[0]).text().trim();
+            var answerId = parseInt($(this).attr('idanswer'));
+
+            if (answer_comment_text == '') {
+                swal({
+                    title: "Attenzione!",
+                    text: "Il campo testo del commento è obbligatorio"
+                });
+            }
+            else {
+
+                var AnswerCommentNewViewModel = {
+                      AnswerComment: {
+                        AnswerSource: {
+                            Id: answerId
+                        },
+                        Description: answer_comment_text
+                    }
+                }
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: server_url + 'Answer/NewAnswerComment',
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    data: $.toJSON(AnswerCommentNewViewModel)
+                }).done(function (result) {
+
+                    if (result.success) {
+                        swal({
+                            title: "Perfetto!",
+                            text: "Commento alla Risposta inserita correttamente",
+                            type: "success"
+                        });
+
+                        //var newID = result.newID;
+                        var UserName = result.UserName;
+                        var UserId = result.UserId;
+                        var Description = result.Description;
+                        var UpdateDate = result.UpdateDate;
+
+
+
+                        var $newAnswerComment = create_new_answerComment(UserName, UserId, Description, UpdateDate);
+                        $('#lst-answer-comments-' + answerId).append($newAnswerComment).find('li.new-answer-comment').fadeIn(2000);
+                        //clear the response
+                        $('#collapse-answer-comments-' + answerId + ' div[contenteditable="true"').text('');
+                        //and collapse the editor
+                        $('#collapse-answer-comments-' + answerId).removeClass("in")
+                    }
+                    else {
+                        swal({
+                            title: "Attenzione!",
+                            text: result.message,
+                            type: "warning"
+                        });
+                    }
+                }); // end ajax insert
+
+            } // end ok validation (else)
+
+
+
+        });
+
+        /****************  Answer event handlers ***********/
+
+        // Initialize response editor
+        $('.response-editor').summernote({
+            airMode: true
+        });
+
+        $('#btn_reset').on('click', function () {
+            $('.response-editor').text('');
+        });
+
+        $('#btn_response').on('click', function () {
+            if ($('.response-editor').text().trim() == '')
+            {
+                swal({
+                    title: "Attenzione!",
+                    text: "Il campo testo della risposta è obbligatorio"
+                });
+            }
+            else
+            {
+                var answer_text = $('.response-editor').text();
+
+                var AnswerNewModel = {
+                    NewAnswer : {
+                        QuestionSource: {
+                            Id: questionId
+                        },
+                        Description: answer_text
+                    }
+                }
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: server_url + 'Answer/NewAnswer',
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    data: $.toJSON(AnswerNewModel)
+                }).done(function (result) {
+
+                    if (result.success) {
+                        swal({
+                            title:"Perfetto!",
+                            text: "Risposta inserita Correttamente",
+                            type: "success"
+                        });
+
+                        var newID = result.newID;
+                        var UserId = result.UserId;
+                        var UserName = result.UserName;
+                        var Description = result.Description;
+                        var UpdateDate = result.UpdateDate;
+
+
+                        var $newAnswer = create_new_answer(newID, UserId, UserName, Description, UpdateDate);
+                        $('#responses-panel').append($newAnswer).find('li.new-answer').fadeIn('slow');
+
+                        /************   Insert Event Handler for the new comment ******/
+
+                        $('#answer-comments-editor-'+newID).summernote({
+                            airMode: true
+                        });
+
+                        $('.btn_reset_answercomment').on('click', function () {
+                            $($(this).closest('.panel-body').children()[0]).text('');
+                        });
+
+                        $('.btn_new_answercomment[idanswer="' + newID  + '"]').on('click', function () {
+
+                            var answer_comment_text = $($(this).closest('.panel-body').children()[0]).text();
+                            var answerId = parseInt($(this).attr('idanswer'));
+
+                            if (answer_comment_text == '') {
+                                swal({
+                                    title: "Attenzione!",
+                                    text: "Il campo testo del commento è obbligatorio"
+                                });
+                            }
+                            else {
+
+                                var AnswerCommentNewViewModel = {
+                                    AnswerComment: {
+                                        AnswerSource: {
+                                            Id: answerId
+                                        },
+                                        Description: answer_comment_text
+                                    }
+                                }
+                                $.ajax({
+                                    cache: false,
+                                    type: "POST",
+                                    url: server_url + 'Answer/NewAnswerComment',
+                                    contentType: "application/json;charset=utf-8",
+                                    dataType: "json",
+                                    data: $.toJSON(AnswerCommentNewViewModel)
+                                }).done(function (result) {
+
+                                    if (result.success) {
+                                        swal({
+                                            title: "Perfetto!",
+                                            text: "Commento alla Risposta inserita correttamente",
+                                            type: "success"
+                                        });
+
+                                        //var newID = result.newID;
+                                        var UserName = result.UserName;
+                                        var UserId = result.UserId;
+                                        var Description = result.Description;
+                                        var UpdateDate = result.UpdateDate;
+
+
+
+                                        var $newAnswerComment = create_new_answerComment(UserName, UserId, Description, UpdateDate);
+                                        $('#lst-answer-comments-' + answerId).append($newAnswerComment).find('li.new-answer-comment').fadeIn(2000);
+                                        //clear the response
+                                        $('#collapse-answer-comments-' + answerId + ' div[contenteditable="true"').text('');
+                                        //and collapse the editor
+                                        $('#collapse-answer-comments-' + answerId).removeClass("in")
+                                    }
+                                    else {
+                                        swal({
+                                            title: "Attenzione!",
+                                            text: result.message,
+                                            type: "warning"
+                                        });
+                                    }
+                                }); // end ajax insert
+
+                            } // end ok validation (else)
+
+
+
+                        });
+
+                        $('.btn_reset_answercomment[idanswer="' + newID + '"]').on('click', function () {
+                            $($(this).closest('.panel-body').children()[0]).text('');
+                        });
+
+                        // event handler for voting
+                        $('.btn-vote-minus[idanswer="' + newID + '"]').on('click', function () {
+                            var answerId = parseInt($(this).attr('idanswer'));
+                            var votecontainer = $('#vote-answer-' + answerId);
+                            var numvote = parseInt(votecontainer.text());
+                            if (numvote <= 0) {
+                                swal({
+                                    title: "Attenzione!",
+                                    text: "La votazione ha raggiunto il suo minimo"
+                                });
+                            }
+                            else {
+                                var AnswerVoteViewModel = {
+                                    AnswerId: answerId,
+                                    Vote: "-"
+                                }
+                                $.ajax({
+                                    cache: false,
+                                    type: "POST",
+                                    url: server_url + 'Answer/VoteAnswer',
+                                    contentType: "application/json;charset=utf-8",
+                                    dataType: "json",
+                                    data: $.toJSON(AnswerVoteViewModel)
+                                }).done(function (result) {
+                                    if (result.success) {
+                                        swal({
+                                            title: "Grazie!",
+                                            text: "Grazie per aver contribuito con il tuo voto!",
+                                            type: "success"
+                                        });
+                                        numvote--;
+                                        votecontainer.text(numvote);
+                                    }
+                                    else {
+                                        swal({
+                                            title: "Attenzione!",
+                                            text: "La votazione non è stata registrata"
+                                        });
+                                    }
+                                });
+                            }
+
+                        });
+
+                        $('.btn-vote-plus[idanswer="' + newID + '"]').on('click', function () {
+                            var answerId = parseInt($(this).attr('idanswer'));
+                            var votecontainer = $('#vote-answer-' + answerId);
+                            var numvote = parseInt(votecontainer.text());
+
+                            var AnswerVoteViewModel = {
+                                AnswerId: answerId,
+                                Vote: "+"
+                            }
+                            $.ajax({
+                                cache: false,
+                                type: "POST",
+                                url: server_url + 'Answer/VoteAnswer',
+                                contentType: "application/json;charset=utf-8",
+                                dataType: "json",
+                                data: $.toJSON(AnswerVoteViewModel)
+                            }).done(function (result) {
+                                if (result.success) {
+                                    swal({
+                                        title: "Grazie!",
+                                        text: "Grazie per aver contribuito con il tuo voto!",
+                                        type: "success"
+                                    });
+                                    numvote++;
+                                    votecontainer.text(numvote);
+                                }
+                                else {
+                                    swal({
+                                        title: "Attenzione!",
+                                        text: "La votazione non è stata registrata"
+                                    });
+                                }
+                            });
+
+                        });
+
+
+
+                        /***************************************************************/
+                        //update responses counter
+                        var num_risposte = parseInt($('#h3-num-risposte').text());
+                        num_risposte++;
+                        $('#h3-num-risposte').text(num_risposte + ' Risposte');
+                        //clear the response
+                        $('.response-editor').text('');
+
+                    }
+                    else {
+                        swal({
+                            title: "Attenzione!",
+                            text: result.message,
+                            type: "warning"
+                        });
+                    }
+                }); // end ajax insert
+
+            } // end ok validation (else)
+
+        }); // end response click
+
+        /*************************  DOM FUNCTIONS **********************/
+        function create_new_answer(newID, UserId, UserName, Description, UpdateDate) {
+            var html = ' <div class="panel-body new-answer" >'+
+                            '<div class="media">'+
+                                '<div class="media-image pull-left">'+
+                                    '<img src="/Content/images/users/'+ UserId +'.png" alt="profile-picture">'+
+                                    '<div class="author-info">'+
+                                        '<strong> '+ UserName+'</strong><br>'+ UpdateDate +
+
+                                        '<div class="badges">' +
+                                            '<i class="fa fa-star text-warning" id="vote-answer-' + newID  + '">0</i>' +
+                                        '</div>'+
+                                        '<div class="">'+
+                                            '<span class="input-group-btn-vertical">'+
+
+                                                '<button class="btn btn-warning2 btn-vote-minus" type="button" idanswer="'+ newID +'"><i class="fa fa-thumbs-o-down"></i></button>'+
+                                                '<button class="btn btn-success btn-vote-plus" type="button" idanswer="' + newID + '"><i class="fa fa-thumbs-o-up"></i></button>' +
+                                            '</span>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="media-body">'+
+                                    Description + '<br />' +
+                                    '<div class="row">'+
+                                        '<div class="col-md-10 col-md-offset-1">'+
+                                            '<div class="hpanel horange">'+
+                                                '<br />'+
+                                                '<div class="panel-heading hbuilt">'+
+                                                    '<div class="panel-tools">'+
+                                                        '<a class="showhide"><i class="fa fa-chevron-up"></i></a>'+
+                                                        '<a class="closebox"><i class="fa fa-times"></i></a>'+
+                                                    '</div>'+
+                                                    'Commenti alla risposta'+
+                                                '</div>'+
+                                                '<div class="panel-body">'+
+                                                   '<ul id="lst-answer-comments-'+ newID +'"> </ul>'+
+                                                '</div>'+
+                                                '<div class="panel-footer">'+
+
+
+
+                                                    '<button class="btn btn-warning btn-sm" type="button" data-toggle="collapse" data-target="#collapse-answer-comments-'+newID+'" aria-expanded="false" aria-controls="collapse-answer-comments-'+newID+'">'+
+                                                        'Aggiungi un Commento'+
+                                                    '</button>'+
+                                                    '<div class="collapse" id="collapse-answer-comments-'+newID+'">'+
+                                                        '<div class="hpanel">'+
+                                                            '<div class="panel-heading">'+
+                                                                '<div>Digitare il commento:</div>'+
+                                                            '</div>'+
+                                                            '<div class="panel-body">'+
+                                                                '<div id="answer-comments-editor-'+newID+'" class="answer-comments-editor">'+
+                                                                '</div>'+
+                                                                '<br />'+
+                                                                '<div class="form-group ">'+
+                                                                    '<div class="col-sm-8 " >'+
+                                                                        '<button class="btn btn-default btn_reset_answercomment" idanswer="'+newID+'">Cancella</button>'+
+                                                                        '<button class="btn btn-success btn_new_answercomment" idanswer="'+newID+'">Inserisci</button>'+
+                                                                    '</div>'+
+                                                                '</div>'+
+                                                            '</div>'+
+                                                        '</div> <!-- End Panel Nuovo Commento alla Domanda-->'+
+                                                    '</div><!-- End Collapse Div -->'+
+                                               '</div>' +
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'+
+                               '</div>'+
+                            '</div>'+
+                    '</div>';
+
+         return html;
+        }
+
+        function create_new_questioncomment(UserName, UserId, Description, UpdateDate) {
+            var html = '<li style="display:none" class="new-question-comment">' +
+                '<i>' + Description +
+                '<span><a href="/Users/' + UserId + '" class="text-info"> (' +
+                UserName + ')</a></span><span>' + UpdateDate + ' </span></i>' +
+                '</li>';
+            return html;
+        }
+
+        function create_new_answerComment(UserName, UserId, Description, UpdateDate)
+        {
+            var html = '<li style="display:none" class="new-answer-comment">' +
+                '<i>' + Description +
+                '<br/><span>( <a href="/Users/' + UserId + '" class="text-info"> ' +
+                UserName + '</a> )</span><span>  ' + UpdateDate + ' </span></i>' +
+                '</li>';
+            return html;
+        }
+   }); // end jquery
+
+
+</script>
+}

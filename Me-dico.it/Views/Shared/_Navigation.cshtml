@@ -1,0 +1,49 @@
+﻿<div id="navigation">
+    <div class="profile-picture">
+        <a href="@Url.Action("Index", "Home")">
+            <img style="width:80%" src="" class="img-circle" alt="user" id="loggeduserimg">
+        </a>
+        <div id="loggeduser" hidden>@User.Identity.Name</div>
+        <br/>
+        <div style="margin-top:13px" class="stats-label text-color">
+            <span style="font-size:12px" class="font-bold">@User.Identity.Name</span>
+
+            <div id="sparkline1" class="small-chart m-t-sm"></div>
+            <div>
+                <h4 class="font-extra-bold m-b-xs">
+                    <i class="fa fa-star text-warning"></i>
+                    <i class="fa fa-star text-warning"></i>
+                    <i class="fa fa-star text-warning"></i>
+                    <i class="fa fa-star-half-empty text-warning"></i>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="renderPartialView">
+        <div id="indexmenu">
+            loading...
+        </div>
+    </div>
+</div>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            var server_api_url = Medico_it.config.apiServerAddress;
+            var server_mvc_url = Medico_it.config.mvcServerAddress;
+
+            var loggeduser = $('#loggeduser').text();
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: server_api_url + 'api/userbyemail?email=' + loggeduser,
+            }).done(function (user) {
+                src = server_mvc_url + 'Content/images/users/' + user.userId + ".png";
+                $('#loggeduserimg').attr('src', src);
+            });
+
+        });
+
+
+    </script>

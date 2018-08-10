@@ -1,0 +1,123 @@
+﻿@model Me_dico.it.Models.MyAnswerViewModel
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Home Page";
+    string userId = ViewBag.userId;
+}
+
+<!--            BREADCRUMBS         -->
+<div class="normalheader transition animated fadeIn">
+    <div class="hpanel">
+        <div class="panel-body">
+            <a class="small-header-action" href="">
+                <div class="clip-header">
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+            </a>
+
+            <div id="hbreadcrumb" class="pull-right m-t-lg">
+                <ol class="hbreadcrumb breadcrumb">
+                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li class="active">
+                        <span>Le Mie Risposte</span>
+                    </li>
+                </ol>
+            </div>
+            <h2 class="font-light m-b-xs">
+                Le Mie Risposte
+            </h2>
+            <small>Lista delle mie risposte in ordine di inserimento</small>
+        </div>
+    </div>
+</div>
+<!--          END BREADCRUMBS       -->
+
+
+
+
+<div class="content animate-panel">
+    <div class="row">
+        <div class="col-lg-12">
+        </div>
+        <div class="col-lg-12">
+            <div class="hpanel forum-box">
+
+                <div class="panel-heading">
+                    <h5><span class="f"> Le mie Risposte > <span class="text-success">Ultime per data inserimento</span> </span></h5>
+                </div>
+
+
+                @foreach (var item in Model.MyAnswers)
+                {
+                    <!--                      QUESTION              -->
+                    <div class="panel-body text-warning">
+                        <a href='@Url.Action("GetQuestion", "Question", new { id = item.QuestionSource.Id })'>
+                            <div class="media">
+                                <div class="media-image pull-left">
+                                    <img src="~/Content/images/users/@{@item.QuestionSource.UserId}.png" alt="profile-picture">
+                                    <div class="author-info">
+                                        <strong> @Html.DisplayFor(modelItem => item.QuestionSource.UserName)</strong><br>
+                                        @Html.DisplayFor(modelItem => item.QuestionSource.UpdateDate)
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <p><h4>@Html.DisplayFor(modelItem => item.QuestionSource.Title)</h4></p>
+                                    <p>@Html.DisplayFor(modelItem => item.QuestionSource.Description)</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+
+                    <!--                       ANSWER               -->
+                    <div class="panel-body text-success">
+                        <div class="media">
+                            <div class="media-image pull-left">
+                                <img src="~/Content/images/users/@{@ViewBag.userId}.png" alt="profile-picture">
+                                <div class="author-info">
+                                    <strong> @Html.DisplayFor(modelItem => item.UserName)</strong><br>
+                                    @Html.DisplayFor(modelItem => item.UpdateDate)
+                                    <div class="badges">
+                                        <i class="fa fa-star text-warning" id="vote-answer-@item.Id">@Html.DisplayFor(modelItem => item.VoteCount)</i>
+                                    </div>
+                                 
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                }
+            </div>
+
+            <div>
+                Pagina @(Model.PagingInfo.TotalPages < Model.PagingInfo.CurrentPage ? 0 : Model.PagingInfo.CurrentPage) di @Model.PagingInfo.TotalPages
+
+                @Html.PagedListPager(Model.MyAnswers, page => Url.Action("MyAnswers", new { page, userId }))
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+    $(function () {
+        $('.badges .btn').css('cursor', 'default');
+
+   }); // end jquery
+
+
+    </script>
+}
+
+

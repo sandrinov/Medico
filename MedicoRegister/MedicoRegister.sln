@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicoRegister.droid", "MedicoRegister.droid\MedicoRegister.droid.csproj", "{DFD0FEF3-18C7-4DFD-B904-6C4A946CE37E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicoRegister.portable", "MedicoRegister.portable\MedicoRegister.portable.csproj", "{0CA2A76E-CD70-4476-ACDB-BACE4A5619DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicoConsole", "MedicoConsole\MedicoConsole.csproj", "{0BF606F7-7A83-41D5-981E-218588C53170}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFD0FEF3-18C7-4DFD-B904-6C4A946CE37E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFD0FEF3-18C7-4DFD-B904-6C4A946CE37E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFD0FEF3-18C7-4DFD-B904-6C4A946CE37E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DFD0FEF3-18C7-4DFD-B904-6C4A946CE37E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFD0FEF3-18C7-4DFD-B904-6C4A946CE37E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFD0FEF3-18C7-4DFD-B904-6C4A946CE37E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0CA2A76E-CD70-4476-ACDB-BACE4A5619DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CA2A76E-CD70-4476-ACDB-BACE4A5619DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CA2A76E-CD70-4476-ACDB-BACE4A5619DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CA2A76E-CD70-4476-ACDB-BACE4A5619DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BF606F7-7A83-41D5-981E-218588C53170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BF606F7-7A83-41D5-981E-218588C53170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BF606F7-7A83-41D5-981E-218588C53170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BF606F7-7A83-41D5-981E-218588C53170}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://fabiodegioia.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = MedicoConsole\\MedicoConsole.csproj
+		SccProjectName1 = MedicoConsole
+		SccLocalPath1 = MedicoConsole
+		SccProjectUniqueName2 = MedicoRegister.droid\\MedicoRegister.droid.csproj
+		SccProjectName2 = MedicoRegister.droid
+		SccLocalPath2 = MedicoRegister.droid
+		SccProjectUniqueName3 = MedicoRegister.portable\\MedicoRegister.portable.csproj
+		SccProjectName3 = MedicoRegister.portable
+		SccLocalPath3 = MedicoRegister.portable
+	EndGlobalSection
+EndGlobal

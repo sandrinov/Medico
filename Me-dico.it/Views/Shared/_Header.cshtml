@@ -1,0 +1,172 @@
+﻿<div class="color-line">
+</div>
+<div id="logo" class="light-version">
+    <span >
+        <img style="vertical-align: middle; width:100px"  src="~/Content/images/logo_white.png" alt="Me-dico.it"/>
+        @*Me-dico.it*@
+        
+    </span>
+</div>
+<link href="~/Content/jquery-ui-1.12.1.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<style>
+    .ui-autocomplete-loading {
+        background: white url("/Content/images/ui-anim_basic_16x16.gif") right center no-repeat;
+    }
+</style>
+
+<nav role="navigation">
+    
+
+    <div class="header-link hide-menu"><i class="fa fa-bars"></i></div>
+    
+    <div class="small-logo">
+        <span class="text-primary">Me-dico.it</span>
+    </div>
+   
+
+            <div class="col-sm-4" style="margin-top: 11px;">
+                <input type="text" class="form-control input-sm" id="txt_search"/>
+            </div>
+                <span >
+                    <button class="btn btn-success" id="btn_search" type="button" style="margin-top: 10px;">
+                        <i class="fa fa-search"></i> 
+                        <span class="bold">Cerca</span>
+                    </button>
+                </span>
+                
+        <div class="navbar-right">
+            <ul class="nav navbar-nav no-borders">
+                <li>
+                    <a href="/Home/Index">
+                        <i class="pe-7s-home"></i>
+                    </a>
+                </li>
+                
+                <li class="dropdown">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                        <i class="pe-7s-keypad"></i>
+                    </a>
+                    <div class="dropdown-menu hdropdown bigmenu animated flipInX">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="/Question/NewQuestion">
+                                            <i class="pe pe-7s-help1 text-info"></i>
+                                            <h5>Nuova Domanda</h5>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="/Tag/All">
+                                            <i class="pe pe-7s-ticket text-warning"></i>
+                                            <h5>Tags</h5>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="/User/All">
+                                            <i class="pe pe-7s-user text-success"></i>
+                                            <h5>Utenti</h5>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="/Home/Contatto">
+                                            <i class="pe pe-7s-mail text-info"></i>
+                                            <h5>Contattaci</h5>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="/Home/Documentazione">
+                                            <i class="pe pe-7s-note2 text-danger"></i>
+                                            <h5>Documentazione</h5>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="/Home/About">
+                                            <i class="pe pe-7s-info text-success"></i>
+                                            <h5>Me-dico.it</h5>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle label-menu-corner" href="#" data-toggle="dropdown">
+                        <i class="pe-7s-mail"></i>
+                        <span class="label label-success">4</span>
+                    </a>
+                    <ul class="dropdown-menu hdropdown animated flipInX">
+                        <div class="title">
+                            Hai 2 nuovi messaggi
+                        </div>
+                        <li>
+                            <a>
+                                Arrivato il nuovo ricettario
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                Raggiunti 10.000 iscritto a me-dico.it
+                            </a>
+                        </li>
+                        <li class="summary"><a href="#">Vai ai messaggi</a></li>
+                    </ul>
+                </li>
+
+               
+
+                @if (User.Identity.IsAuthenticated)
+            {
+                    <li>
+                        <a href="@Url.Action("Logout", "Account")">
+                            <i class="pe-7s-upload pe-rotate-90">
+                            </i>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+</nav>
+
+
+    <script type="text/javascript">
+
+        $(function () {
+          
+            var server_mvc_url = Medico_it.config.mvcServerAddress;
+            var server_api_url = Medico_it.config.apiServerAddress;
+            var source_url = server_api_url + "api/gettitles";
+
+            $("#txt_search").autocomplete({
+                source: source_url,
+                minLength: 2,
+                select: function (event, ui) {
+                    //$('#txt_search').val(ui.item.value)
+                }
+            });
+
+            $('#btn_search').on('click', function () {
+                if ($('#txt_search').val() == '') {
+                    swal({
+                        title: "Attenzione!",
+                        text: "Il campo ricerca non può essere vuoto"
+                    });
+                }
+                else
+                {
+                    var newurl = server_mvc_url + 'Home/IndexWithSearch?textLike=' + $('#txt_search').val();
+                    window.location.href = newurl;
+                }
+               
+            }); // end buttonclick
+
+        });//end jquery
+        
+
+    </script>
+
+

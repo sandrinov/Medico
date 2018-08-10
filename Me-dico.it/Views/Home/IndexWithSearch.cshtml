@@ -1,0 +1,77 @@
+﻿@model Me_dico.it.Models.QuestionViewModel
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Home Page";
+    String textLike = ViewBag.TextLike;
+}
+<div class="content animate-panel">
+    <div class="row">
+        <div class="col-lg-12">
+        </div>
+        <div class="col-lg-12">
+            <div class="hpanel forum-box">
+
+                <div class="panel-heading">
+                    <span class="pull-right">
+                        @* <i class="fa fa-clock-o"> </i> Last modification: 10.12.2015, 10:22 am*@
+                        <a href='@Url.Action("NewQuestion", "Question")' class="btn btn-outline btn-info">Nuova Domanda</a>
+                    </span>
+                    <h5><span class="f"> Domande > <span class="text-success">Ultime per data inserimento</span> </span></h5>
+                </div>
+
+
+                @foreach (var item in Model.Questions)
+                {
+                    <div class="panel-body">
+                        <a href='@Url.Action("GetQuestion", "Question", new { id = item.Id })'>
+                            <div class="media">
+                                <div class="media-image pull-left">
+                                    <img src="~/Content/Images/avatarAnonymous.png" alt="profile-picture">
+                                    <div class="author-info">
+                                        <strong> @Html.DisplayFor(modelItem => item.UserName)</strong><br>
+                                        @Html.DisplayFor(modelItem => item.UpdateDate)
+                                        <div class="badges">
+                                            <button class="btn btn-warning2 btn-xs" type="button"><i class="fa fa-group"></i><br />Visite @Html.DisplayFor(modelItem => item.ViewsCount)</button>
+                                            <button class="btn btn-primary btn-xs" type="button"><i class="fa fa-commenting-o"></i><br />Risposte @Html.DisplayFor(modelItem => item.AnswersCount)</button>
+                                            @*<button class="btn btn-warning btn-xs" type="button"><i class="fa fa-thumbs-o-up"></i><br />Voti @Html.DisplayFor(modelItem => item.VoteCount)</button>*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <p><h4>@Html.DisplayFor(modelItem => item.Title)</h4></p>
+                                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+
+            <div>
+                Pagina @(Model.PagingInfo.TotalPages < Model.PagingInfo.CurrentPage ? 0 : Model.PagingInfo.CurrentPage) di @Model.PagingInfo.TotalPages
+
+                @Html.PagedListPager(Model.Questions, page => Url.Action("IndexWithSearch", new {textLike, page}))
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+    $(function () {
+        $('.badges .btn').css('cursor', 'default');
+
+   }); // end jquery
+
+
+    </script>
+}
+
+

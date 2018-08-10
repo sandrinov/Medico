@@ -1,0 +1,293 @@
+﻿@model Me_dico.it.Model.User
+@{
+    Layout = "~/Views/Shared/_Layout_Landing.cshtml";
+    ViewBag.Title = "Istruzioni";
+    var pos = ViewBag.Registrazione ? "true" : "false";
+}
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="@Url.Action("Index", "Home")" class="navbar-brand">Entra</a>
+            <div class="brand-desc">
+                Me-dico.it
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a class="page-scroll" href="#inizio">Login</a></li>
+                <li><a class="page-scroll" href="#menusinistra">Menu Laterale</a></li>
+                <li><a class="page-scroll" href="#menualto">Menu Alto</a></li>
+                <li><a class="page-scroll" href="#domande">Le Domande</a></li>
+                <li><a class="page-scroll" href="#tags">Tags</a></li>
+                <li><a class="page-scroll" href="#nuovadomanda">Nuova Domanda</a></li>
+                <li><a class="page-scroll" href="#risposta">Risposta</a></li>
+                <li><a class="page-scroll" href="#dettagliodomanda">Dettaglio Domanda</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<br /><br />
+<section id="inizio">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img height="300" src="~/Content/images/istruzioni/login.png" alt="login" />
+            </div>
+            <div class="col-md-6">
+                <h4>Come Entrare</h4>
+                <p>Una volta terminata la fase di registrazione, si può cliccare ul pulsante verde 'Entra'
+                 posto in alto a sinistra e automaticamente si viene reindirizzati sulla pagina di login.
+                Qui è sufficiente inserire le proprie credenziali e se corrette, ci si trova nella pagina principale.</p>
+            </div>
+           
+        </div>
+    </div>
+</section>
+
+<section id="menusinistra">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img height="300" src="~/Content/images/istruzioni/menu.png" alt="menu" />
+            </div>
+            <div class="col-md-6">
+                <h4>Menu Laterale</h4>
+                <p>
+                    La pagina iniziale (come tutte le pagine del portale) è formata da un menu laterale
+                    e da un contenuto centrale in queso caso contenente tutte le domande presenti nel portale
+                </p>
+                <p>
+                    Il menu laterale (a sinistra) serve per poter navigare in alcune pagine del sito contenenti
+                     alcune informazioni sulla propria attività. 
+                </p>
+                <p>
+                    si trovano qui infatti le voci per andare nella pagina di visualizzazione delle proprie domande, 
+                    la pagina delle proprie risposte e del proprio profilo. Una pagina inoltre è dedicata alle statistiche
+                     per dar conto all'utente della sua attività all'interno del portale. Una voce infine
+                     permette di andare nella pagina di configurazione con le impostazioni secondo le proprie preferenze
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="menualto">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img height="300" src="~/Content/images/istruzioni/menuinalto.png" alt="menu" class="img-responsive"/>
+            </div>
+            <div class="col-md-6">
+                <h4>Menu In alto</h4>
+                <p>
+                    Il menu in alto, come quello laterale, è sempre presente in tutte le pagine. Vi si accede
+                     cliccando sulla icona accanto alla 'casina' anch'essa in alto a destra che indica il ritorno alla pagina principale ovunque ci troviamo.
+                </p>
+                <p>
+                    Il menu in alto contiene graficamente alcune voci fondamentali per usufruire del portale
+                     in maniera semplice e veloce. Le voci del menu sono 'Nuova domanda', <a class="page-scroll  text-info" href="#tags">
+    'Tags' </a>, 'Lista degli Utenti', 'Link per contattare lo staff', 'Link a questa pagina'
+    e infine 'Info su questo portale'.
+</p>
+              
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="domande">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img height="300" src="~/Content/images/istruzioni/domande.png" alt="menu" class="img-responsive" />
+            </div>
+            <div class="col-md-6">
+                <h4>Lista delle Domande (pagina principale - Home)</h4>
+                <p>
+                    E' la pagina che permette di visualizzare tutte le domande del sito in ordine di 'apparizione'. Le domande
+                     più recenti verranno visualizzate per prime. Se vogliamo ricercare delle domande abbiamo a disposizione per 
+                     tutto il portale la capacità di inserire le parole chiave nel campo di ricerca in alto e attendere che il 
+                     motore ci elenchi tutte le domande che hanno nel proprio titolo quelle parole.
+                </p>
+                <p>
+                   La lista fornisce per ogni domanda sia quante visualizzazioni ha ottenuto, sia il numero di risposte ricevute
+                     oltre natiralmente all'autore della domanda stessa. I campi azzurri riportano i tag a cui appartiene la domanda
+                     ricordando che i <a class="page-scroll  text-info" href="#tags">tags</a> indicano i macroargomenti toccati nel testo della domanda.
+</p>
+                <p>
+                    In alto a destra troviamo un pulsante per entrare nella pagina per inserire una nuova domanda
+                </p>
+                <p>
+                    Cliccando su una domanda si entra nella pagina del <a class="page-scroll text-info" href="#dettagliodomanda">
+    dettaglio della domanda </a>dove troveremo
+    le risposte e i commenti relativi a quella domanda
+</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="tags">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img height="300" src="~/Content/images/istruzioni/tags.png" alt="menu" class="img-responsive" />
+            </div>
+            <div class="col-md-6">
+                <h4>Tags</h4>
+                <p>
+                    I Tags sono i macro-argomenti relativi al testo della domanda. Associando uno o più tags (fino a un massimo di tre 
+                     per domanda) si possono catalogare meglio le domande. Nella pagina dei tag troviamo sia la lista
+                     dei tags, sia la possibilità di inserire dei nuovi tags. Se si clicca su un tag della lista
+                     ci troviamo nella pagina delle domande a cui è stato associato qul tag in fase di inserimento.
+                </p>
+               
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="nuovadomanda">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img height="300" src="~/Content/images/istruzioni/nuovadomanda.png" alt="menu" class="img-responsive" />
+            </div>
+            <div class="col-md-6">
+                <h4>Nuova Domanda</h4>
+                <p>
+                   In questa pagina si può inserire una nuova domanda. Per farlo è necessario associare alla
+                    domanda almeno un <a class="page-scroll text-info" href="#tags">
+    tag </a> (fino a un massimo di tre), Inserire un titolo con alcune parole chiave e
+    infine il testo della domanda stessa.
+</p>
+                <p>
+                    Le parole chiave inserite nel titolo serviranno a far trovare la domanda quando tali parole verranno inserite 
+                    nel campo di ricerca sempre presente in alto nel menu principale.
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="risposta">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img height="300" src="~/Content/images/istruzioni/risposta.png" alt="menu" class="img-responsive" />
+            </div>
+            <div class="col-md-6">
+                <h4>Risposta</h4>
+                <p>
+                   Dalla <a class="page-scroll text-info" href="#domande">lista delle domande </a>si può entrare nel dettaglo di una di esse. E' qui che abbiamo la
+    possibilità (come descritto nel dettaglio della domanda) di poter inserire la nostra risposta.
+    La risposta verrà associata subito alla domanda e sarà immediatamente disponibile a tutti i
+    medici utenti del portale
+</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="dettagliodomanda">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img height="300" src="~/Content/images/istruzioni/dettagliodomanda.png" alt="menu" class="img-responsive" />
+            </div>
+            <div class="col-md-6">
+                <h4>Dettaglio della Domanda</h4>
+                <p>
+                   E' forse la pagina con maggiori funzionalità di tutto il sito. In essa si può inserire
+                     un <a class="page-scroll text-info" href="#commentodomada">
+    commento alla domanda</a>, <a class="page-scroll text-info" href="#votarisposta">
+    votare una risposta</a>, inserire un commento alla risposta e infine <a class="page-scroll text-info" href="#votarisposta">
+    risposndere alla domanda stessa.</a>
+</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="commentodomada">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img height="300" src="~/Content/images/istruzioni/commento_alla_domanda.png" alt="menu" class="img-responsive" />
+            </div>
+            <div class="col-md-6">
+                <h4>Commento della Domanda</h4>
+                <p>
+                    Si possono inserire dei commenti alla domanda per arricchire ancora di più gli argomenti trattati
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="votarisposta">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img height="300" src="~/Content/images/istruzioni/votarisposta.png" alt="menu" class="img-responsive" />
+            </div>
+            <div class="col-md-6">
+                <h4>Voto alla Risposta</h4>
+                <p>
+                    Si possono votare le ripsoste esprimendo il nostro giudizio su argomenti che riteniamo di pertinenza
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(function () {
+
+            // Page scrolling feature
+            $('a.page-scroll').bind('click', function (event) {
+                var link = $(this);
+                $('html, body').stop().animate({
+                    scrollTop: $(link.attr('href')).offset().top - 50
+                }, 500);
+                event.preventDefault();
+            });
+
+            $('body').scrollspy({
+                target: '.navbar-fixed-top',
+                offset: 80
+            });
+            if (@pos)  $("#Registrazione").trigger("click");
+        });
+
+        $(document).ready(function() {
+            $('#page-top').particleground({
+                dotColor: '#111111',
+                lineColor: '#000000'
+            });
+
+        });
+    </script>
+}

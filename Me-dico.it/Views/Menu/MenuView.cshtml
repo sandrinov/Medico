@@ -1,0 +1,11 @@
+﻿@model Me_dico.it.Models.MenuViewModel
+@{
+
+}
+
+@foreach (var item in Model.MenuVoices)
+{
+    <li class="@Html.IsSelected(controller: "Account")">
+        <a href="@Url.Action("Index", "Profilo")"> <span class="nav-label">@item.Text</span></a>
+    </li>
+}

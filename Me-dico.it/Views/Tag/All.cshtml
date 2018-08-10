@@ -1,0 +1,155 @@
+﻿@model Me_dico.it.Models.TagViewModel
+
+@{
+    ViewBag.Title = "All Tags";
+}
+
+
+<div class="normalheader transition animated fadeIn">
+    <div class="hpanel">
+        <div class="panel-body">
+            <a class="small-header-action" href="">
+                <div class="clip-header">
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+            </a>
+
+            <div id="hbreadcrumb" class="pull-right m-t-lg">
+                <ol class="hbreadcrumb breadcrumb">
+                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li class="active">
+                        <span>Tags</span>
+                    </li>
+                </ol>
+            </div>
+            <h2 class="font-light m-b-xs">
+                Tags
+            </h2>
+            <small>Lista dei Tags, Inseriscine di nuovi</small>
+        </div>
+    </div>
+</div>
+
+
+<div class="content animate-panel">
+
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="hpanel">
+                <div class="panel-heading">
+                    <div class="panel-tools">
+                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                        <a class="closebox"><i class="fa fa-times"></i></a>
+                    </div>
+                    <br />
+                </div>
+                <div class="panel-body float-e-margins">
+                    <p>
+                        Selezionare un Tag per vedere tutte le domande che lo contengono
+                    </p>
+
+                    <p id="p-tags-list">
+                        @foreach (var tag in Model.Tags)
+                        {
+
+                            <a href='@Url.Action("GetQuestionsByTag", "Question", new { page=1, tagId = @tag.Id, tagName=@tag.Description })' class="btn btn-info" role="button">@Html.DisplayFor(t => tag.Description)</a>
+
+                        }
+                    </p>
+
+
+                </div> <!-- End Panel Tag List -->
+                <br />
+                <div class="panel-body float-e-margins">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Nuovo Tag</label>
+
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="txt_newtag"> <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary" id="btn_newtag">
+                                        Inserisci
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Panel New Tag -->
+
+            </div> <!-- End Main Panel -->
+        </div> <!-- End Column -->
+    </div> <!-- End Row -->
+
+
+</div>
+
+
+@section Styles {
+    @Styles.Render("~/bundles/sweetAlert/css")
+    @Styles.Render("~/bundles/toastr/css")
+}
+
+
+
+
+@section Scripts
+{
+@Scripts.Render("~/bundles/sweetAlert/js")
+@Scripts.Render("~/bundles/toastr/js")
+@Scripts.Render("~/bundles/json/js")
+
+    <script type="text/javascript">
+        $(function () {
+            var server_api_url = Medico_it.config.apiServerAddress;
+
+            $('#btn_newtag').on('click', function () {
+                var $txt_newtag = $('#txt_newtag').val();
+
+                if ($txt_newtag == '' || $txt_newtag == ' ') {
+                    swal({
+                        title: "Attenzione!",
+                        text: "Il nome del tag non può essere vuoto"
+                    });
+                }
+                else {
+                    var Tag = {
+                        Description: $txt_newtag
+                    }
+                    $.ajax({
+                        cache: false,
+                        type: "POST",
+                        url: server_api_url + 'api/newtag',
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        data: $.toJSON(Tag)
+                    }).done(function (result) {
+                        if (result.success) {
+                            swal({
+                                title: "Perfetto!",
+                                text: "Tag inserito correttamente!",
+                                type: "success"
+                            });
+                            addNewTagToList(result.newID, result.description);
+
+                        }
+                        else {
+                            swal({
+                                title: "Attenzione!",
+                                text: "La Il tag non è stato registrato"
+                            });
+                        }
+                    });
+                }
+            });//end btn-click
+
+
+            function addNewTagToList(newID, Description)
+            {
+                var html = '<a href="/Question/GetQuestionsByTag?page=1&tagId=' + newID + '&tagName=' + Description+ '" class="btn btn-success" role="button">' + Description + '</a>';
+                $('#p-tags-list').append(html);
+                $('#txt_newtag').val('');
+            }
+
+        });//end jquery
+    </script>
+}

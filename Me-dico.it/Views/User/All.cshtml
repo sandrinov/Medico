@@ -1,0 +1,121 @@
+﻿@model Me_dico.it.Models.UserViewModel
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "All Users";
+    int numOfEntities = Model.Users.Count;
+    List<Me_dico.it.Model.User> list_one = new List<Me_dico.it.Model.User>();
+    List<Me_dico.it.Model.User> list_two = new List<Me_dico.it.Model.User>();
+    foreach (var item in Model.Users.Take(4))
+    {
+        list_one.Add(item);
+    }
+
+    foreach (var item in Model.Users.Skip(4))
+    {
+        list_two.Add(item);
+    }
+
+    int x = 0;
+
+}
+<!--            BREADCRUMBS         -->
+<div class="normalheader transition animated fadeIn">
+    <div class="hpanel">
+        <div class="panel-body">
+            <a class="small-header-action" href="">
+                <div class="clip-header">
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+            </a>
+
+            <div id="hbreadcrumb" class="pull-right m-t-lg">
+                <ol class="hbreadcrumb breadcrumb">
+                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li class="active">
+                        <span>Utenti</span>
+                    </li>
+                </ol>
+            </div>
+            <h2 class="font-light m-b-xs">
+                Utenti
+            </h2>
+            <small>Lista dei dottori iscritti al portale</small>
+        </div>
+    </div>
+</div>
+<!--          END BREADCRUMBS       -->
+
+<div class="content animate-panel">
+
+    <div class="row">
+    @foreach (var item in list_one)
+    {
+        <div class="col-lg-3">
+            <div class="hpanel hgreen contact-panel">
+                <div class="panel-body">
+                    <span class="label label-success pull-right">NEW</span>
+                    <img alt="logo" class="img-circle m-b" src="~/Content/images/users/@{@item.UserId.ToString()}.png">
+
+                    <h3><a href=""> @item.NickName </a></h3>
+                    <div class="text-muted font-bold m-b-xs">@item.Email</div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan
+                    </p>
+                </div>
+                <div class="panel-footer contact-footer">
+                    <div class="row">
+                        <div class="col-md-4 border-right"> <div class="contact-stat"><span>Domande: </span> <strong>200</strong></div> </div>
+                        <div class="col-md-4 border-right"> <div class="contact-stat"><span>Risposte: </span> <strong>300</strong></div> </div>
+                        <div class="col-md-4"> <div class="contact-stat"><span>Commenti: </span> <strong>400</strong></div> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    </div>
+    
+    <div class="row">
+        @foreach (var item in list_two)
+        {
+            <div class="col-lg-3">
+                <div class="hpanel hgreen contact-panel">
+                    <div class="panel-body">
+                        <span class="label label-success pull-right">NEW</span>
+
+                            <img alt="logo" class="img-circle m-b" src="~/Content/images/users/@{@item.UserId.ToString()}.png">
+
+
+                        <h3><a href="">@item.NickName </a></h3>
+                        <div class="text-muted font-bold m-b-xs">@item.Email</div>
+                        <p>
+
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan
+                        </p>
+                    </div>
+                    <div class="panel-footer contact-footer">
+                        <div class="row">
+                            <div class="col-md-4 border-right"> <div class="contact-stat"><span>Domande: </span> <strong>200</strong></div> </div>
+                            <div class="col-md-4 border-right"> <div class="contact-stat"><span>Risposte: </span> <strong>300</strong></div> </div>
+                            <div class="col-md-4"> <div class="contact-stat"><span>Commenti: </span> <strong>400</strong></div> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
+    <div>
+        Pagina @(Model.PagingInfo.TotalPages < Model.PagingInfo.CurrentPage ? 0 : Model.PagingInfo.CurrentPage) di @Model.PagingInfo.TotalPages
+
+        @Html.PagedListPager(Model.Users, page => Url.Action("All", new { page }))
+
+    </div>
+    <div>
+        <small>Totale Utenti: @Model.PagingInfo.TotalCount</small>
+    </div>
+</div>
+
